@@ -30,7 +30,7 @@ custom:
   #################################################################
   ##                          Local Deployment                   ##
   #################################################################
-  secrets: ${file(./Config/config.offline.yml)}
+  secrets: ${file(./Config/config.dev.yml)}
 
 provider:
   name: aws
@@ -39,6 +39,7 @@ provider:
   environment:
     NODE_ENV: ${self:custom.secrets.NODE_ENV}
     #mysql
+    MYSQL_DB_IDENTIFIER: ${self:custom.secrets.MYSQL_DB_IDENTIFIER}
     MYSQL_DB_NAME: ${self:custom.secrets.MYSQL_DB_NAME}
     MYSQL_DB_USERNAME: ${self:custom.secrets.MYSQL_DB_USERNAME}
     MYSQL_DB_PASSWORD: ${self:custom.secrets.MYSQL_DB_PASSWORD}
@@ -148,3 +149,7 @@ functions:
 
 plugins:
   - serverless-offline
+
+resources:
+  Resources:
+    MySqlRDSInstance: ${file(./Resources/MySql_RDS_Instance.yml)}

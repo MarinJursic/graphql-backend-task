@@ -1,4 +1,3 @@
-"use strict";
 const { GraphQLServerLambda } = require("graphql-yoga");
 var fs = require("fs");
 const typeDefs = fs.readFileSync("./schema.gql").toString("utf-8");
@@ -13,6 +12,7 @@ const resolvers = {
     generate_api_key: require("./resolver/Mutation/generateApiKey").func,
   },
 };
+
 const lambda = new GraphQLServerLambda({
   typeDefs,
   resolvers,
