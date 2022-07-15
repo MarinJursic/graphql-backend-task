@@ -9,6 +9,7 @@ exports.func = async (_) => {
     process.env.MYSQL_DB_PASSWORD,
     {
       dialect: "mysql",
+      dialectModule: require("mysql2"),
       host: process.env.MYSQL_DB_HOST,
       port: 3306,
       logging: false,
